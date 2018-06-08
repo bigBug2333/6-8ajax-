@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  
+  <button>发送get请求</button>
+  <div></div>
+  <p>哈哈哈</p>
+  <span>呵呵</span>
+
+
+  <script>
+  
+    var btn = document.querySelector("button");
+    var div = document.querySelector("div");
+    btn.onclick = function() {
+      
+      //发送ajax请求
+      //1. 创建一个xhr对象
+      var xhr = new XMLHttpRequest;
+      //2. 设置请求相关的内容
+      //设置请求行并且带了参数
+      xhr.open("get", "01.ge#t.php?name=zs&age=18&desc=shuai");
+      xhr.send(null)
+
+      //3. 获取响应的结果
+      //3.1 监听响应状态的变化
+      xhr.onreadystatechange = function() {
+        console.log(xhr.readyState);
+        //响应结束了
+        if(xhr.readyState === 4) {
+          console.log(xhr.responseText);
+          div.innerText = xhr.responseText;
+        }
+
+      }
+
+    }
+  
+  </script>
+
+</body>
+</html>
